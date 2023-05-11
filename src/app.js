@@ -35,7 +35,7 @@ app.get('/api/get-next-num', (req, res) => {
   const nextNum = parseInt(req.body.num) + 1;
 
   // Return the response
-  res.json({ status: 'success', message: nextNum });
+  res.status(200).json({ status: 'success', message: nextNum });
 });
 
 module.exports = app;
