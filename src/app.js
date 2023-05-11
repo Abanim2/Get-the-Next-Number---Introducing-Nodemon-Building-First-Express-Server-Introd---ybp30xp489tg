@@ -16,26 +16,14 @@
 const express = require('express');
 const app = express();
 
-// Middlewares
+//Middlewares
 app.use(express.json());
 
-// GET Request to get the next number from the input 'num'
+// Write a GET Request to get the next number from the input 'num'.
+// Endpoint : /api/get-next-num
+// Return the response as {message : , status: }
 app.get('/api/get-next-num', (req, res) => {
-  // Check if the number is provided in the request body
-  if (!req.body.num) {
-    return res.status(400).json({ status: 'failure', message: 'Number not provided.' });
-  }
-
-  // Check if the input is a valid integer
-  if (isNaN(parseInt(req.body.num))) {
-    return res.status(400).json({ status: 'failure', message: 'Invalid number provided.' });
-  }
-
-  // Get the next number
-  const nextNum = parseInt(req.body.num) + 1;
-
-  // Return the response
-  res.status(200).json({ status: 'success', message: nextNum });
-});
+    res.status(200).json({ "message": req.body.num + 1, "status": "success" })
+})
 
 module.exports = app;
